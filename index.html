@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<title>광주 상수도 리디자인 시안 비교</title>
+<style>
+:root {
+    --primary:#00a3ff; --accent:#2f6fff; --bg:#f6f9fc; --card:#ffffff;
+    --text:#222; --sub:#555; --border:#d8e2ef;
+}
+*{box-sizing:border-box;}
+body{
+    margin:0; font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--bg); color:var(--text); font-size:15px;
+}
+header{
+    background:#fff; border-bottom:1px solid var(--border); position:sticky; top:0;
+}
+.top-bar{
+    max-width:1180px; margin:0 auto; padding:14px 20px;
+    display:flex; justify-content:space-between; align-items:center;
+}
+.top-bar-title{font-size:1.5rem;font-weight:700;}
+.top-bar-sub{font-size:14px;color:var(--sub);}
+nav{
+    max-width:1180px; margin:0 auto; padding:0 20px 12px; display:flex; gap:8px;
+}
+.nav-pill{
+    padding:0.5rem 1rem; border-radius:20px; background:transparent;
+    border:1px solid transparent; font-size:1rem; cursor:pointer; color:var(--sub);
+}
+.nav-pill.active{
+    background:#e9f3ff; border-color:#c6e1ff; color:var(--accent); font-weight:600;
+}
+main{max-width:1180px;margin:0 auto;padding:24px 20px 40px;}
+h2{font-size:24px;margin:0 0 10px;}
+h3{font-size:1rem;margin:0 0 6px;font-weight:600;}
+p{margin:0 0 6px;}
+.badge{
+    display:inline-block;padding:2px 8px;border-radius:12px;
+    background:#e6f2ff;color:var(--accent);font-size:0.9em;margin-right:4px;
+}
+.section{
+    background:var(--card);border-radius:16px;padding:20px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.06);margin-bottom:20px;
+}
+.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.caption{font-size:13px;color:var(--sub);}
+.link-btn{
+    padding:6px 12px;border-radius:20px;background:#f2f7ff;
+    border:1px solid #d0e5ff;color:var(--accent);font-size:0.9rem;font-weight: 600; text-decoration:none;
+}
+.cols-2{
+    display:grid;grid-template-columns:2fr 2fr;gap:20px;
+}
+.card{
+    background:#fbfdff;border:1px solid var(--border);border-radius:10px;
+    padding:14px;font-size:14px;
+}
+ul{margin:20px 0 0 20px;padding:0;font-size:1rem;}
+li{margin-bottom:15px;}
+.compare-table{
+    width:100%;border-collapse:collapse;font-size:1rem;
+}
+.compare-table th,.compare-table td{
+    border:1px solid var(--border);padding:6px 8px;vertical-align:top;
+}
+.compare-table th{background:#f3f7ff;width:20%;}
+.highlight{
+    background:#fff6e2;border-radius:6px;padding:10px;
+    font-size:0.9rem; margin-top:10px;
+}
+@media(max-width:860px){
+    .cols-2{grid-template-columns:1fr;}
+    .section-header{flex-direction:column;align-items:flex-start;}
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+    document.querySelectorAll(".nav-pill").forEach(btn=>{
+        btn.onclick=()=>{
+            const t=btn.dataset.target;
+            document.querySelectorAll(".nav-pill").forEach(b=>b.classList.remove("active"));
+            btn.classList.add("active");
+            document.querySelectorAll("[data-layout]").forEach(s=>{
+                s.style.display=s.dataset.layout===t?"block":"none";
+            });
+        };
+    });
+});
+</script>
+</head>
+<body>
+
+<header>
+    <div class="top-bar">
+        <div class="top-bar-title">상수도 메인 리디자인 비교</div>
+        <div class="top-bar-sub">웹디자인 / 프론트엔드</div>
+    </div>
+    <nav>
+        <button class="nav-pill active" data-target="layout1">시안 1</button>
+        <button class="nav-pill" data-target="layout2">시안 2</button>
+        <button class="nav-pill" data-target="layout3">비교</button>
+    </nav>
+</header>
+
+<main>
+
+<!-- 시안1 -->
+<section class="section" data-layout="layout1">
+    <div class="section-header">
+        <h2>시안 1 – 기본 리뉴얼</h2>
+        <a class="link-btn" target="_blank" href="https://ryusy00.github.io/sangsudo-new/">보기 ↗</a>
+    </div>
+    
+    <div class="cols-2">
+        <div class="card">
+            <h3><span class="badge">요약</span></h3>
+            <ul>
+                <li>구조 변경 없이 화면만 현대적으로 개선</li>
+                <li>주요 서비스 아이콘 전면 배치로 빠른 접근</li>
+                <li>배너·공지 한 영역에 모아 가독성 개선</li>
+                <li>밝은 색상으로 안정적·친근한 인상</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3><span class="badge">주요 영역</span></h3>
+            <ul>
+                <li>메인 슬라이드 배너</li>
+                <li>탭형 소식/공지 게시판</li>
+                <li>자주 찾는 서비스 아이콘 8개</li>
+                <li>수질 현황(기본 정보 중심)</li>
+                <li>대표전화 간단 표기</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="highlight">기존 구조 유지 + 디자인 정리 중심</div>
+</section>
+
+<!-- 시안2 -->
+<section class="section" data-layout="layout2" style="display:none;">
+    <div class="section-header">
+        <h2>시안 2 – 확장형</h2>
+        <a class="link-btn" target="_blank" href="https://ryusy00.github.io/sangsudo-new_2/">보기 ↗</a>
+    </div>
+    
+    <div class="cols-2">
+        <div class="card">
+            <h3><span class="badge">요약</span></h3>
+            <ul>
+                <li>Mega GNB로 상단에서 전체 메뉴 한눈에 확인</li>
+                <li>좌측 배너·우측 소식카드로 주요 정보 집중 노출</li>
+                <li>자주 찾는 서비스에 파스텔 색상으로 서비스 구분</li>
+                <li>수질 정보(pH·색도·탁도·잔류염소)를 수치 카드로 분리</li>
+                <li>푸른 밴드형 고객센터 영역으로 대표전화 강조</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3><span class="badge">홍보관 영역</h3>
+            <ul>
+                <li>메인 하단에 ‘상수도 홍보·체험관’ 카드 3개를 별도 영역으로 배치</li>
+                <li>수돗물 체험캠프·정수장 견학·시민참여단 등 실제 운영 프로그램을 한눈에 소개</li>
+                <li>각 카드에서 상세 안내·온라인 신청 페이지로 직접 연결</li>
+                <li>요금·민원 중심 이미지를 넘어 체험·교육·소통하는 기관 이미지로 확장</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="highlight">시민참여를 늘리고 기관 브랜드 이미지를 높이는 고도화 제안</div>
+</section>
+
+<!-- 비교 -->
+<section class="section" data-layout="layout3" style="display:none;">
+    <h2>시안 비교 요약</h2>
+    <table class="compare-table">
+        <tr><th>구분</th><th>시안 1</th><th>시안 2</th></tr>
+        <tr><th>방향</th><td>기존 구조 유지, UI 정리</td><td>구조·콘텐츠 모두 확장</td></tr>
+        <tr><th>메뉴</th><td>일반 GNB</td><td>Mega GNB</td></tr>
+        <tr><th>수질정보</th><td>문장형 정보</td><td>수치 카드형 정보</td></tr>
+        <tr><th>대표전화</th><td>텍스트 표기</td><td>밴드형 고객센터 배너</td></tr>
+        <tr><th>홍보관</th><td>별도 영역 없음</td><td>체험·견학·참여단 홍보관 영역 추가</td></tr>
+        <tr><th>적합 상황</th><td>빠른 리뉴얼 필요 시</td><td>브랜드·참여 확대가 목표일 때</td></tr>
+    </table>
+
+    <div class="highlight">
+        1단계는 시안 1로 안정 리뉴얼 후,<br>
+        2단계에서 시안 2의 Mega GNB·홍보관 영역을 순차 도입하는 방식도 제안 가능합니다.
+    </div>
+</section>
+
+</main>
+</body>
+</html>
